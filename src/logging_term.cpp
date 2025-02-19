@@ -133,6 +133,13 @@ Op LoggingTerm::get_op() const { return op; }
 
 Sort LoggingTerm::get_sort() const { return sort; }
 
+string LoggingTerm::to_raw_string() {
+  if(!raw_repr.empty())
+    return raw_repr;
+  raw_repr = wrapped_term->to_string();
+  return raw_repr;
+}
+
 string LoggingTerm::to_string()
 {
   if (!repr.empty())

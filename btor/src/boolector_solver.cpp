@@ -489,6 +489,18 @@ void BoolectorSolver::get_unsat_assumptions(UnorderedTermSet & out)
   }
 }
 
+void BoolectorSolver::get_unsat_assumptions(TermList & out)
+{
+  BoolectorNode ** bcore = boolector_get_failed_assumptions(btor);
+  while (*bcore)
+  {
+    out.push_back(std::make_shared<BoolectorTerm>(
+        btor, boolector_copy(btor, *bcore)));
+    ++bcore;
+  }
+}
+
+
 Sort BoolectorSolver::make_sort(const std::string name, uint64_t arity) const
 {
   throw IncorrectUsageException("Can't declare sorts with Boolector");

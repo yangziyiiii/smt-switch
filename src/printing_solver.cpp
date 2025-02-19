@@ -211,6 +211,12 @@ void PrintingSolver::get_unsat_assumptions(UnorderedTermSet & out)
   wrapped_solver->get_unsat_assumptions(out);
 }
 
+void PrintingSolver::get_unsat_assumptions(TermList & out)
+{
+  (*out_stream) << "(" << GET_UNSAT_ASSUMPTIONS_STR << ")" << endl;
+  wrapped_solver->get_unsat_assumptions(out);
+}
+
 UnorderedTermMap PrintingSolver::get_array_values(const Term & arr,
                                                  Term & out_const_base) const
 {
@@ -250,14 +256,37 @@ Result PrintingSolver::check_sat() {
 
 }
 
+
+template <typename T>
+static string term_vec_to_string(const T & assumptions) {
+  string assumptions_str;
+  bool first = true;
+  for (Term a : assumptions) {
+    assumptions_str += (first ? "" : " ") + a->to_string();
+    first = false;
+  }
+  return assumptions_str;
+}
+
 Result PrintingSolver::check_sat_assuming(const TermVec & assumptions)
 {
-  string assumptions_str;
-  for (Term a : assumptions) {
-    assumptions_str += a->to_string() + " ";
-  }
+  string assumptions_str = term_vec_to_string(assumptions);
   (*out_stream) << "(" << CHECK_SAT_ASSUMING_STR << " (" << assumptions_str << "))" << endl;
   return wrapped_solver->check_sat_assuming(assumptions);
+}
+
+Result PrintingSolver::check_sat_assuming_list(const TermList & assumptions)
+{
+  string assumptions_str = term_vec_to_string(assumptions);
+  (*out_stream) << "(" << CHECK_SAT_ASSUMING_STR << " (" << assumptions_str << "))" << endl;
+  return wrapped_solver->check_sat_assuming_list(assumptions);
+}
+
+Result PrintingSolver::check_sat_assuming_set(const UnorderedTermSet & assumptions)
+{
+  string assumptions_str = term_vec_to_string(assumptions);
+  (*out_stream) << "(" << CHECK_SAT_ASSUMING_STR << " (" << assumptions_str << "))" << endl;
+  return wrapped_solver->check_sat_assuming_set(assumptions);
 }
 
 void PrintingSolver::push(uint64_t num) { 
