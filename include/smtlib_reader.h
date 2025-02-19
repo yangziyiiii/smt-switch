@@ -246,7 +246,7 @@ class SmtLibReader
    *  These aren't used except in the definition and will always
    *  be substituted for
    */
-  Term register_arg(const std::string & name, const smt::Sort & sort);
+  virtual Term register_arg(const std::string & name, const smt::Sort & sort);
 
   /** Create an alias for a sort
    *  define-sort in SMT-LIB can take arguments, but currently this

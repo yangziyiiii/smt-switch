@@ -17,6 +17,9 @@
 #include "cvc5_solver.h"
 #include "utils.h"
 
+#include <stdexcept>
+#include <limits>
+
 namespace smt {
 
 /* cvc5 Op mappings */

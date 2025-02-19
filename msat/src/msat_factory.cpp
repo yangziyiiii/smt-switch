@@ -34,7 +34,8 @@ SmtSolver MsatSolverFactory::create(bool logging)
   return solver;
 }
 
-SmtSolver MsatSolverFactory::create_interpolating_solver()
+SmtSolver MsatSolverFactory::create_interpolating_solver(
+  const MsatInterpolatorConfiguration & cfg)
 {
   MsatInterpolatingSolver * mis = new MsatInterpolatingSolver();
   std::shared_ptr<MsatInterpolatingSolver> s(mis);

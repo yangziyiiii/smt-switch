@@ -65,6 +65,7 @@ class BzlaSolver : public AbsSmtSolver
   UnorderedTermMap get_array_values(const Term & arr,
                                     Term & out_const_base) const override;
   void get_unsat_assumptions(UnorderedTermSet & out) override;
+  void get_unsat_assumptions(TermList & out) override;
   Sort make_sort(const std::string name, std::uint64_t arity) const override;
   Sort make_sort(SortKind sk) const override;
   Sort make_sort(SortKind sk, std::uint64_t size) const override;

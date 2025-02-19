@@ -225,6 +225,23 @@ void BzlaSolver::get_unsat_assumptions(UnorderedTermSet & out)
   }
 }
 
+void BzlaSolver::get_unsat_assumptions(TermList & out)
+{
+  std::vector<bitwuzla::Term> bcore;
+  try
+  {
+    bcore = get_bitwuzla()->get_unsat_assumptions();
+  }
+  catch (std::exception & e)
+  {
+    throw InternalSolverException(e.what());
+  }
+  for (auto && elt : bcore)
+  {
+    out.push_back(std::make_shared<BzlaTerm>(elt));
+  }
+}
+
 Sort BzlaSolver::make_sort(const std::string name, std::uint64_t arity) const
 {
   throw NotImplementedException(

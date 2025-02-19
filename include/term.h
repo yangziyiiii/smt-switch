@@ -58,6 +58,8 @@ class AbsTerm
   virtual std::wstring getStringValue() const{
     throw NotImplementedException("Strings not supported for this solver.");
   }
+  /* to_raw_string in smt2 format : logging term will override this */
+  virtual std::string to_raw_string() { return to_string(); }
   /* returns true iff this term is a symbol */
   virtual bool is_symbol() const = 0;
   /* returns true iff this term is a parameter (to be bound by a quantifier) */

@@ -136,7 +136,7 @@ Sort TermTranslator::transfer_sort(const Sort & sort)
   }
 }
 
-Term TermTranslator::transfer_term(const Term & term)
+Term TermTranslator::transfer_term(const Term & term, bool allow_create_new_symbols)
 {
   if (cache.find(term) != cache.end())
   {
@@ -205,6 +205,9 @@ Term TermTranslator::transfer_term(const Term & term)
         }
         catch (IncorrectUsageException & e)
         {
+          if (!allow_create_new_symbols)
+          throw SmtException("Try to create symbol : " + t->to_string() + " of type "
+                   + t->get_sort()->to_string() + ", which is not allowed.");
           cache[t] = solver->make_symbol(name, s);
         }
       }

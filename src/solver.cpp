@@ -36,6 +36,11 @@ Result AbsSmtSolver::check_sat_assuming_set(
       "check_sat_assuming_set not implemented by default");
 }
 
+void AbsSmtSolver::get_unsat_assumptions(TermList & out) {
+  throw NotImplementedException(
+      "get_unsat_assumptions not implemented by default");
+}
+
 SortVec AbsSmtSolver::make_datatype_sorts(
     const std::vector<DatatypeDecl> & decls) const
 {

@@ -79,7 +79,7 @@ class TermTranslator
    *  @param term the term to transfer to the member variable solver
    *  @return a term belonging to this solver
    */
-  Term transfer_term(const Term & term);
+  Term transfer_term(const Term & term, bool allow_create_new_symbols = true);
 
   /** Transfers a term and casts it to a particular SortKind
    *  for now, only supports Bool <-> BV1 and Int <-> Real
