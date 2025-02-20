@@ -26,11 +26,11 @@ endif()
 
 find_library(POLYLIB REQUIRED
              NAMES libpicpoly.a
-             PATHS "${CVC5_HOME}/build/deps/lib")
+             PATHS "${CVC5_HOME}/lib")
 
 find_library(POLYLIBXX REQUIRED
              NAMES libpicpolyxx.a
-             PATHS "${CVC5_HOME}/build/deps/lib")
+             PATHS "${CVC5_HOME}/lib")
 
 find_library(CADICAL REQUIRED
              NAMES libcadical.a libcadical.so libcadical.dylib
@@ -38,6 +38,9 @@ find_library(CADICAL REQUIRED
 
 target_link_libraries(smt-switch-cvc5 "${CVC5_HOME}/lib/libcvc5.a")
 target_link_libraries(smt-switch-cvc5 "${CVC5_HOME}/lib/libcvc5parser.a")
+target_link_libraries(smt-switch-cvc5 "${CVC5_HOME}/lib/libcadical.a")
+target_link_libraries(smt-switch-cvc5 "${CVC5_HOME}/lib/libpicpoly.a")
+target_link_libraries(smt-switch-cvc5 "${CVC5_HOME}/lib/libpicpolyxx.a")
 target_link_libraries(smt-switch-cvc5 "${POLYLIBXX}")
 target_link_libraries(smt-switch-cvc5 "${POLYLIB}")
 target_link_libraries(smt-switch-cvc5 "${CADICAL}")

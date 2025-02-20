@@ -35,7 +35,7 @@ else
     echo "$DEPS/cvc5 already exists. If you want to rebuild, please remove it manually."
 fi
 
-if [ -f $DEPS/cvc5/lib/libcvc5.a ] && [ -f $DEPS/cvc5/lib/libcvc5parser.a ] && [ -f $DEPS/lib/libcadical.a ]; then
+if [ -f $DEPS/cvc5/lib/libcvc5.a ] && [ -f $DEPS/cvc5/lib/libcvc5parser.a ] && [ -f $DEPS/cvc5/lib/libcadical.a ]; then
     echo "It appears cvc5 was setup successfully into $DEPS/cvc5."
     echo "You may now install it with make ./configure.sh --cvc5 && cd build && make"
 else
