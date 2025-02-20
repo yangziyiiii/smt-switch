@@ -14,6 +14,7 @@ set(INCLUDE_DIRS
 
 # add to search path for find_package
 list(APPEND CMAKE_PREFIX_PATH "${PROJECT_SOURCE_DIR}/deps/install")
+list(APPEND CMAKE_PREFIX_PATH "${PROJECT_SOURCE_DIR}/deps/bitwuzla/include/bitwuzla/cpp")
 
 if (NOT SMT_SWITCH_LIB_TYPE)
   set(SMT_SWITCH_LIB_TYPE SHARED)
@@ -134,7 +135,6 @@ endif()
 # should we build boolector?
 option (BUILD_BTOR
   "Should we build the libraries for boolector" OFF)
-
 if (BUILD_BTOR)
   if (NOT DEFINED BTOR_HOME)
     set(BTOR_HOME "${PROJECT_SOURCE_DIR}/deps/boolector")
@@ -153,12 +153,13 @@ if (BUILD_BITWUZLA)
   if (NOT DEFINED BITWUZLA_DIR)
     # default location if using contrib/setup-bitwuzla.sh
     # will also search global paths
-    set (BITWUZLA_DIR "${PROJECT_SOURCE_DIR}/deps/install")
+    set (BITWUZLA_DIR "${PROJECT_SOURCE_DIR}/deps/bitwuzla")
   endif()
   add_subdirectory (bitwuzla)
   set (SOLVER_BACKEND_LIBS ${SOLVER_BACKEND_LIBS} smt-switch-bitwuzla)
 
   add_definitions(-DBUILD_BITWUZLA)
+  add_definitions(-DBITWUZLA_HOME=${BITWUZLA_DIR})
 endif (BUILD_BITWUZLA)
 
 
