@@ -101,6 +101,11 @@ else()
     PATTERN "smtlibparser_maps.h" EXCLUDE)
 endif()
 
+find_package(CADICAL REQUIRED)
+find_package(POLYLIB REQUIRED)
+find_package(POLYLIBXX REQUIRED)
+
+
 include_directories (${INCLUDE_DIRS})
 
 add_library(smt-switch "${SMT_SWITCH_LIB_TYPE}" ${SOURCES})
