@@ -16,7 +16,7 @@ else
     NUM_CORES=1
 fi
 
-$DIR/setup-cadical.sh
+# $DIR/setup-cadical.sh
 
 if [ ! -d "$DEPS/cvc5" ]; then
     cd $DEPS

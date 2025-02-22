@@ -1,0 +1,7 @@
+--2025-02-22 14:55:06--  https://github.com/cvc5/cvc5/releases/download/cvc5-1.1.2/cvc5-Linux-static.zip
+Connecting to 127.0.0.1:7890... connected.
+Failed reading proxy response: Connection reset by peer
+Retrying.
+
+--2025-02-22 14:55:21--  (try: 2)  https://github.com/cvc5/cvc5/releases/download/cvc5-1.1.2/cvc5-Linux-static.zip
+Connecting to 127.0.0.1:7890... failed: Connection refused.
