@@ -15,7 +15,7 @@ target_include_directories (smt-switch-cvc5 PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}/
 target_include_directories (smt-switch-cvc5 PUBLIC "${CVC5_HOME}/bin")
 target_include_directories (smt-switch-cvc5 PUBLIC "${CVC5_HOME}/include")
 target_include_directories (smt-switch-cvc5 PUBLIC "${CVC5_HOME}/lib")
-target_include_directories (smt-switch-cvc5 PUBLIC "${CVC5_HOME}/install")
+# target_include_directories (smt-switch-cvc5 PUBLIC "${CVC5_HOME}/install")
 # TEMP only until the internal kinds are no longer part of public API
 target_include_directories (smt-switch-cvc5 PUBLIC "${CVC5_HOME}/build/include")
 target_include_directories (smt-switch-cvc5 PUBLIC ${GMP_INCLUDE_DIR})
@@ -34,13 +34,14 @@ find_library(POLYLIBXX REQUIRED
 
 find_library(CADICAL REQUIRED
              NAMES libcadical.a libcadical.so libcadical.dylib
+             PATHS "${CVC5_HOME}/lib"
              )
 
 target_link_libraries(smt-switch-cvc5 "${CVC5_HOME}/lib/libcvc5.a")
 target_link_libraries(smt-switch-cvc5 "${CVC5_HOME}/lib/libcvc5parser.a")
-target_link_libraries(smt-switch-cvc5 "${CVC5_HOME}/lib/libcadical.a")
-target_link_libraries(smt-switch-cvc5 "${CVC5_HOME}/lib/libpicpoly.a")
-target_link_libraries(smt-switch-cvc5 "${CVC5_HOME}/lib/libpicpolyxx.a")
+# target_link_libraries(smt-switch-cvc5 "${CVC5_HOME}/lib/libcadical.a")
+# target_link_libraries(smt-switch-cvc5 "${CVC5_HOME}/lib/libpicpoly.a")
+# target_link_libraries(smt-switch-cvc5 "${CVC5_HOME}/lib/libpicpolyxx.a")
 target_link_libraries(smt-switch-cvc5 "${POLYLIBXX}")
 target_link_libraries(smt-switch-cvc5 "${POLYLIB}")
 target_link_libraries(smt-switch-cvc5 "${CADICAL}")

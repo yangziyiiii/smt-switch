@@ -101,11 +101,6 @@ else()
     PATTERN "smtlibparser_maps.h" EXCLUDE)
 endif()
 
-find_package(CADICAL REQUIRED)
-find_package(POLYLIB REQUIRED)
-find_package(POLYLIBXX REQUIRED)
-
-
 include_directories (${INCLUDE_DIRS})
 
 add_library(smt-switch "${SMT_SWITCH_LIB_TYPE}" ${SOURCES})
@@ -177,6 +172,7 @@ if (BUILD_CVC5)
     set(CVC5_HOME "${PROJECT_SOURCE_DIR}/deps/cvc5")
   endif()
   add_subdirectory (cvc5)
+  set (CADICAL_LIBRARY "${PROJECT_SOURCE_DIR}/deps/cvc5/lib/libcadical.a")
   set (SOLVER_BACKEND_LIBS ${SOLVER_BACKEND_LIBS} smt-switch-cvc5)
 
   add_definitions(-DBUILD_CVC5)
