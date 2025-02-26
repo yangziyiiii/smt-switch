@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e
 
-BITWUZLA_VERSION=0e81e616af4d4421729884f01928b194c3536c76
+BITWUZLA_VERSION=06bca95621ce618e4958151fba61b13dd4805ba5
 DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" >/dev/null 2>&1 && pwd)"
 DEPS="$(dirname "$DIR")/deps"
 
