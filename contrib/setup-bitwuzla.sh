@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e
 
-BITWUZLA_VERSION=06bca95621ce618e4958151fba61b13dd4805ba5
+BITWUZLA_VERSION=fc8610fcfad12902d4eae4741ceb386524cf9b10
 DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" >/dev/null 2>&1 && pwd)"
 DEPS="$(dirname "$DIR")/deps"
 
@@ -9,9 +9,9 @@ mkdir -p $DEPS
 
 if [ ! -d "$DEPS/bitwuzla" ]; then
     cd $DEPS
-    git clone https://github.com/yangziyiiii/bitwuzla.git
+    git clone https://github.com/bitwuzla/bitwuzla.git
     cd bitwuzla
-    # git checkout -f $BITWUZLA_VERSION
+    git checkout -f $BITWUZLA_VERSION
     ./configure.py --prefix $DEPS/install
     cd build
     meson compile
