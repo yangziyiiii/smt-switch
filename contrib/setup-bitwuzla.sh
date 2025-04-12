@@ -9,9 +9,9 @@ mkdir -p $DEPS
 
 if [ ! -d "$DEPS/bitwuzla" ]; then
     cd $DEPS
-    git clone https://github.com/bitwuzla/bitwuzla.git
+    git clone https://github.com/yangziyiiii/bitwuzla.git
     cd bitwuzla
-    git checkout -f $BITWUZLA_VERSION
+    # git checkout -f $BITWUZLA_VERSION
     ./configure.py --prefix $DEPS/install
     cd build
     meson compile
